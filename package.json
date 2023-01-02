@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "npx prettier --write .",
     "lint": "eslint --ext .ts . --fix",
-    "start": "nodemon"
+    "start": "nodemon",
+    "tsc": "npx tsc"
   },
   "author": "",
   "license": "ISC",
