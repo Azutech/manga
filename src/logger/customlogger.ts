@@ -20,15 +20,15 @@ const logger = createLogger({
     transports: [
       new transports.Console({
         format: combine(
-          label({ message: true, label: 'MYPITCHHUB EXPRESS SERVER!' }),
+          label({ message: true, label: 'MANGA EXPRESS SERVER!' }),
           colorize(),
           simple(),
         ),
       }),
-      new transports.File({ filename: 'logs/error.log', level: 'error' }),
-      new transports.File({ filename: 'logs/info.log', level: 'info' }),
-      new transports.File({ filename: 'logs/debug.log' }),
-      new transports.File({ filename: 'logs/combined.log' }),
+      new transports.File({ filename: 'src/logs/error.log', level: 'error' }),
+      new transports.File({ filename: 'src/logs/info.log', level: 'info' }),
+      new transports.File({ filename: 'src/logs/debug.log' }),
+      new transports.File({ filename: 'src/logs/combined.log' }),
     ],
 });
 

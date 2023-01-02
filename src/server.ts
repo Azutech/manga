@@ -1,5 +1,6 @@
 
 import  express,{ Application, Request, Response} from 'express'
+import logger from '../src/logger/customlogger'
 import * as dotenv from 'dotenv'
 import database from '../src/connections/database'
 
@@ -26,7 +27,7 @@ app.get('*', (req: Request, res: Response) => {
 }) 
 
 app.listen(PORT, () => {
-    return console.log(`Express is listening at http://localhost:${PORT}`)
+    return logger.info(`Express is listening at http://localhost:${PORT}`)
 })
 
 
