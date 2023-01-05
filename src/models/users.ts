@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import UserType from "../interfaces/usertype";
 
-const userSchema = new Schema(
+const userSchema = new Schema<UserType>(
   {
     firstName: {
       type: String,
@@ -27,14 +28,24 @@ const userSchema = new Schema(
     },
 
     mobileNumber: {
-      type: String,
+      type: Number,
       required: true,
       trim: true,
     },
-
-    is_Active: {
+    emailVerifed: {
       type: Boolean,
-      required: false,
+      required: true,
+      default: false,
+    },
+
+    verificationCode: {
+      type: String,
+      select: true,
+    },
+
+    refreshtoken: {
+      type: String,
+      index: true,
     },
   },
   { timestamps: true }

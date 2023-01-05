@@ -1,22 +1,18 @@
 import jwt from "jsonwebtoken";
 import AppError from "../errors/errors";
-import {  Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { Request } from "express-serve-static-core";
+import dotenv from "dotenv";
 
-import User from '../models/users'
-import dotenv from 'dotenv'
+dotenv.config();
 
-dotenv.config()
-
-declare module 'express-serve-static-core' {
-    export interface Request {
-      user: any
-    }
+declare module "express-serve-static-core" {
+  export interface Request {
+    user: any;
   }
+}
 
 export const secret = process.env.TOKEN_SECRET as string;
-
-
 
 export const verifytoken = async (
   req: Request,
@@ -35,18 +31,18 @@ export const verifytoken = async (
       return next(new AppError("This token does not belong to you", 403));
     }
 
-    const encryption = jwt.verify(token, secret)
+    const encryption = jwt.verify(token, secret);
     if (!encryption) {
-        return next(new AppError('Invalid Token', 404))
+      return next(new AppError("Invalid Token", 404));
     }
-    req.user = encryption
+    req.user = encryption;
 
     // const currentUser = await User.findOne({encryption._id})
     // if(!currentUser) {
 
     // }
-    
-    next()
+
+    next();
   } catch (err) {
     next(err);
   }
