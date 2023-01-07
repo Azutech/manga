@@ -1,8 +1,9 @@
-import {Router} from 'express'
-import { register } from '../controllers/users'
+import { Router } from "express";
+import { signup, register } from "../services/auth/users";
 
-const users = Router()
+const users = Router();
 
-users.post('/auth/register', register)
+users.post("/auth/register", signup);
+users.post("/auth/signup", register);
 
-export default users
+export default users;

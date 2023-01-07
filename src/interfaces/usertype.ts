@@ -1,11 +1,10 @@
 type UserType = {
-  userId?: string;
   firstName: string;
   lastName: string;
   email: string;
-  mobileNumber: number;
+  mobileNumber: string;
   password: string;
-  emailVerifed: boolean;
+  emailVerified: boolean;
   verificationCode: string;
   refreshtoken?: string;
 };

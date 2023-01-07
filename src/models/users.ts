@@ -6,7 +6,6 @@ const userSchema = new Schema<UserType>(
     firstName: {
       type: String,
       required: true,
-      trim: true,
     },
 
     lastName: {
@@ -28,11 +27,11 @@ const userSchema = new Schema<UserType>(
     },
 
     mobileNumber: {
-      type: Number,
+      type: String,
       required: true,
       trim: true,
     },
-    emailVerifed: {
+    emailVerified: {
       type: Boolean,
       required: true,
       default: false,

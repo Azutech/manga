@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "npx prettier --write .",
     "lint": "eslint --ext .ts . --fix",
-    "start": "nodemon",
+    "dev": "nodemon src/server.ts",
     "tsc": "npx tsc"
   },
   "author": "",
