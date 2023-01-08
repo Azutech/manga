@@ -3,6 +3,10 @@ import UserType from "../interfaces/usertype";
 
 const userSchema = new Schema<UserType>(
   {
+    googleId : {
+      type: String
+    },
+
     firstName: {
       type: String,
       required: true,
