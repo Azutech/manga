@@ -21,6 +21,7 @@ const database = async () => {
 
     .catch((err) => {
       logger.error(`Error connecting to the database. n${err}`);
+      process.exit(1)
     });
 };
 

@@ -62,7 +62,10 @@ export const signup = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
+
+  console.log(req.body)
   const { firstName, lastName, email, mobileNumber, password } = req.body;
+  
 
   if (!email)
     return res.status(404).json({ message: "kindly fill in all your email" });
