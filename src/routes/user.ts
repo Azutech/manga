@@ -1,9 +1,8 @@
-import { Router } from "express";
-import { signup } from "../services/auth/users";
+import { Router } from 'express';
+import { signup } from '../services/auth/users';
 
 const users = Router();
 
-users.post("/auth/registeration", signup);
-
+users.post('/auth/registeration', signup);
 
 export default users;

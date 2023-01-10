@@ -1,10 +1,10 @@
-import { Schema, model } from "mongoose";
-import UserType from "../interfaces/usertype";
+import { Schema, model } from 'mongoose';
+import UserType from '../interfaces/usertype';
 
 const userSchema = new Schema<UserType>(
   {
-    googleId : {
-      type: String
+    googleId: {
+      type: String,
     },
 
     firstName: {
@@ -54,5 +54,5 @@ const userSchema = new Schema<UserType>(
   { timestamps: true }
 );
 
-const User = model("user", userSchema);
+const User = model('user', userSchema);
 export default User;
