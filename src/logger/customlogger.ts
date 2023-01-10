@@ -1,4 +1,4 @@
-import { createLogger, format, transports } from "winston";
+import { createLogger, format, transports } from 'winston';
 
 const { combine, timestamp, label, printf, colorize, simple } = format;
 
@@ -7,27 +7,27 @@ const myFormat = printf(({ level, message, label, timestamp }) => {
 });
 
 const labelTimestamps = combine(
-  label({ label: "boom" }),
+  label({ label: 'boom' }),
   timestamp(),
   myFormat
 );
 
 const logger = createLogger({
-  level: "debug",
+  level: 'debug',
   format: labelTimestamps,
   exitOnError: false,
   transports: [
     new transports.Console({
       format: combine(
-        label({ message: true, label: "MANGA EXPRESS SERVER!" }),
+        label({ message: true, label: 'MANGA EXPRESS SERVER!' }),
         colorize(),
         simple()
       ),
     }),
-    new transports.File({ filename: "src/logs/error.log", level: "error" }),
-    new transports.File({ filename: "src/logs/info.log", level: "info" }),
-    new transports.File({ filename: "src/logs/debug.log" }),
-    new transports.File({ filename: "src/logs/combined.log" }),
+    new transports.File({ filename: 'src/logs/error.log', level: 'error' }),
+    new transports.File({ filename: 'src/logs/info.log', level: 'info' }),
+    new transports.File({ filename: 'src/logs/debug.log' }),
+    new transports.File({ filename: 'src/logs/combined.log' }),
   ],
 });
 
