@@ -23,6 +23,8 @@ server.use(express.urlencoded({ extended: true }));
 // server.use(passport.session())
 
 
+server.use("/api", routes);
+
 server.get("/", (req: Request, res: Response) => {
   res
     .status(200)
@@ -34,7 +36,7 @@ server.get("*", (req: Request, res: Response) => {
   res.status(404).json({ message: "This route does not exist" });
 });
 
-server.use("/api", routes);
+
 
 server.listen(PORT, () => {
   return logger.info(`Express is listening at http://localhost:${PORT}`);

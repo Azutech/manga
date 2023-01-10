@@ -11,103 +11,46 @@ dotenv.config();
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
 
-export const signup = async (req: Request, res: Response) => {
-  const code = codeGenerator();
+export const signup = async function (req: Request, res: Response) {
+    const code = codeGenerator()
 
-  const newUser: UserType = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    mobileNumber: req.body.mobileNumber,
-    password: bcrypt.hashSync(req.body.password, 10),
-    emailVerified: false,
-    verificationCode: code,
-  };
-
-  const foundUser = await User.findOne(req.body.email).exec();
-
-  if (foundUser) return res.status(404).json({ message: "User exists" });
-
-  try {
-    // const refreshtoken = createToken(
-    //   { email: newUser.email },
-    //   TOKEN_SECRET,
-    //   "30s"
-    // );
-
-    // if (!newUser) {
-    //     return res.status(404).json({ message: `cant create user` });
-    // }
-    // newUser.refreshtoken = refreshtoken;
-
-    // const user = new User(newUser);
-
-    // user.save();
-
-    // res.cookie("jwt", refreshtoken, {
-    //   httpOnly: true,
-    //   sameSite: "none",
-    //   secure: true,
-    //   maxAge: 1000 * 60 * 60 * 24,
-    // });
-
-    res.status(202).json({
-      success: true,
-      message: "user has been created successfully",
-      data: newUser,
-    });
-  } catch (err) {
-    return res.status(404).json({ message: `cant create user ${err}` });
+    const newUser = new User({
+      firstName : req.body.firstName,
+      lastName : req.body.lastName,
+      email: req.body.email,
+      mobileNumber: req.body.mobileNumber,
+      password: hashSync(req.body.password, 10),
+      emailVerified: false,
+      verificationCode: code
+    })
+ try {
+  const check = await User.findOne({email: req.body.email}) 
+  if (check) {
+    res.status(404).json({message: 'user already exists'})
   }
-};
 
-export const register = async (req: Request, res: Response) => {
+  const refreshtoken = createToken(
+    { email: newUser.email },
+    TOKEN_SECRET,
+    "30s"
+  );
 
-  console.log(req.body)
-  const { firstName, lastName, email, mobileNumber, password } = req.body;
-  
+  if (!newUser)
+  return res.status(404).json({ message: "Unable to create User" });
+  newUser.refreshtoken = refreshtoken;
 
-  if (!email)
-    return res.status(404).json({ message: "kindly fill in all your email" });
+  await newUser.save()
 
-  const foundUser = await User.findOne({ email }).exec();
+  return res.status(202).json({
+    success: true,
+    message: 'User has been created',
+    data: newUser
+  })
+ } catch (err) {
+  console.log(err)
+    return res.status(404).json({message: `User not created ${err}`})
+ }
 
-  if (foundUser)
-    return res.status(404).json({ message: "user already exixts" });
+}
 
-  try {
-    const user = await User.findByIdAndUpdate(
-      { email },
-      {
-        firstName,
-        lastName,
-        email,
-        mobileNumber,
-        password,
-      },
 
-      { new: true, upsert: true }
-    );
-
-    user.password = hashSync(req.body.password, 10);
-
-    const refreshtoken = createToken(
-      { email: user.email },
-      TOKEN_SECRET,
-      "30s"
-    );
-    if (!user)
-      return res.status(404).json({ message: "Unable to create User" });
-    user.refreshtoken = refreshtoken;
-    user.save();
-
-    return res.status(202).json({
-      success: true,
-      message: "user has been created successfully",
-      data: user,
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(404).json({ message: `unable to create user ${err}` });
-  }
-};
