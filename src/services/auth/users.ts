@@ -6,6 +6,7 @@ import codeGenerator from '../../utils/codeGenerator';
 import { createToken } from '../../utils/token';
 import UserType from '../../interfaces/usertype';
 import AppError from '../../errors/errors';
+import { verificationMail } from '../mail/sendMails';
 
 dotenv.config();
 
@@ -40,7 +41,11 @@ export const signup = async function (req: Request, res: Response) {
     newUser.refreshtoken = refreshtoken;
 
     await newUser.save();
-
+    await verificationMail(
+      newUser.firstName,
+      newUser.email,
+      newUser.verificationCode
+    );
     return res.status(202).json({
       success: true,
       message: 'User has been created',
@@ -49,5 +54,30 @@ export const signup = async function (req: Request, res: Response) {
   } catch (err) {
     console.log(err);
     return res.status(404).json({ message: `User not created ${err}` });
+  }
+};
+
+export const verificationEmail = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { code } = req.params;
+  const user = await User.findOne({ verificationCode: code });
+  console.log(user)
+  if (!user)
+    return next(new AppError(`This user ${user} can not be verified`, 404));
+
+  try {
+    user.emailVerified = true;
+    await user.save();
+
+    return res.status(202).json({
+      message:
+        'Email has been verified, Close this tab and Go to the Login page',
+    });
+  } catch (err) {
+    console.log(err);
+    return next(err);
   }
 };
