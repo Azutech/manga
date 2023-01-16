@@ -30,3 +30,5 @@
 2023-01-11T14:31:51.169Z [boom] info: Express is listening at http://localhost:3000
 2023-01-11T14:31:52.831Z [boom] info: Express is listening at http://localhost:3000
 2023-01-11T14:31:59.195Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T15:53:28.866Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T15:53:31.899Z [boom] info: Connected to Manga DB on localhost
