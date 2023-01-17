@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
 import bcrypt, { hashSync } from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import User from '../../models/users';
 import codeGenerator from '../../utils/codeGenerator';
 import { createToken } from '../../utils/token';
@@ -64,7 +65,7 @@ export const verificationEmail = async (
 ) => {
   const { code } = req.params;
   const user = await User.findOne({ verificationCode: code });
-  console.log(user)
+  console.log(user);
   if (!user)
     return next(new AppError(`This user ${user} can not be verified`, 404));
 
@@ -79,5 +80,46 @@ export const verificationEmail = async (
   } catch (err) {
     console.log(err);
     return next(err);
+  }
+};
+
+export const authentication = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) return next(new AppError('User not found', 401));
+  const hash = bcrypt.compareSync(req.body.password, user.password);
+  if (!hash) return next(new AppError('Invalid Credentials', 404));
+
+  if (user.emailVerified === false)
+    return next(
+      new AppError('Pending Account. Please Verify Your Email!', 401)
+    );
+
+  // const refreshtoken = createToken(
+  //   { email: user.email },
+  //   TOKEN_SECRET,
+  //   '30s'
+  // );
+
+  // user.refreshtoken = refreshtoken
+  await user.save();
+
+  try {
+    const token = jwt.sign({ user }, TOKEN_SECRET, {
+      expiresIn: '2h',
+    });
+    res.cookie('manga_token', token);
+
+    return res.status(201).json({
+      success: true,
+      message: 'User logged in successfully',
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
   }
 };
