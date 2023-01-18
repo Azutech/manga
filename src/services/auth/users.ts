@@ -138,6 +138,7 @@ export const logout = async (req: Request, res: Response) => {
         status: 'error',
       });
     }
+    await user.save()
     return res.status(200).json({ message: 'User logged out successfully' });
   } catch (err) {
     console.log(err);
