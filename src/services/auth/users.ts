@@ -91,7 +91,7 @@ export const authentication = async (
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) return next(new AppError('User not found', 401));
-  const hash = bcrypt.compareSync(req.body.password, user.password);
+  const hash = bcrypt.compareSync(password, user.password);
   if (!hash) return next(new AppError('Invalid Credentials', 404));
 
   if (user.emailVerified === false)
@@ -121,5 +121,25 @@ export const authentication = async (
   } catch (err) {
     console.log(err);
     next(err);
+  }
+};
+
+export const logout = async (req: Request, res: Response) => {
+  const { refreshtoken } = req.cookies;
+  try {
+    const user = await User.findOne({ refreshtoken });
+    if (user) {
+      res.clearCookie('jwt', {
+        httpOnly: true,
+        secure: false,
+      });
+    } else {
+      return res.status(400).json({
+        status: "error",
+      })
+    }
+    return res.status(200).json({ message: 'User logged out successfully' });
+  } catch (err) {
+    console.log(err);
   }
 };
