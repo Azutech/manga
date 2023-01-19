@@ -1,6 +1,7 @@
 import User from '../../models/users';
 import AppError from '../../errors/errors';
 import { Request, Response, NextFunction } from 'express';
+import { nextTick } from 'process';
 
 export const getAllUsers = async (
   req: Request,
@@ -61,4 +62,47 @@ export const destroyerUser = async (
     message: `user with this id ${id} has been deleted`,
     data: removeUser,
   });
+};
+
+export const personalInfo = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  const { address, city, state, zipcode } = req.body;
+
+  if (!(address || city || state || zipcode)) {
+    return res.status(201).json({
+      message: 'Input required parameters',
+    });
+  }
+
+  try {
+    const founderUser = await User.findOne({ _id: id });
+
+    if (!founderUser) return next(new AppError('user not found', 404));
+
+    const update = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          shippingAddress: address,
+          'address.city': city,
+          'address.state': state,
+          'address.zipcode': zipcode,
+        },
+      }
+    );
+
+    console.log(update);
+    return res.status(200).json({
+      message: 'Shippig address has been updated',
+      status: true,
+      data: update,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
 };
