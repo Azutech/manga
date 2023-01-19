@@ -97,7 +97,7 @@ export const personalInfo = async (
 
     console.log(update);
     return res.status(200).json({
-      message: 'Shippig address has been updated',
+      message: 'Shipping address has been updated',
       status: true,
       data: update,
     });

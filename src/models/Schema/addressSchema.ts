@@ -16,4 +16,7 @@ export const AddressSchema = new Schema({
   zipcode: {
     type: String,
   },
-});
+
+},
+{ _id: false },
+);
