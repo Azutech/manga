@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import UserType from '../interfaces/usertype';
+import { AddressSchema } from './Schema/addressSchema';
 
 const userSchema = new Schema<UserType>(
   {
@@ -49,6 +50,15 @@ const userSchema = new Schema<UserType>(
     refreshtoken: {
       type: String,
       index: true,
+    },
+
+    address: {
+      type: AddressSchema,
+      default: {},
+    },
+
+    shippingAddress: {
+      type: String,
     },
   },
   { timestamps: true }

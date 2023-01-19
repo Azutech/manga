@@ -8,6 +8,8 @@ type UserType = {
   emailVerified: boolean;
   verificationCode: string;
   refreshtoken?: string;
+  address?: string;
+  shippingAddress?: string;
 };
 
 export default UserType;
