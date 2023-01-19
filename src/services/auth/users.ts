@@ -4,6 +4,7 @@ import bcrypt, { hashSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../../models/users';
 import codeGenerator from '../../utils/codeGenerator';
+import passGenerator from '../../utils/passGenerator';
 import { createToken } from '../../utils/token';
 import UserType from '../../interfaces/usertype';
 import AppError from '../../errors/errors';
@@ -124,6 +125,16 @@ export const authentication = async (
   }
 };
 
+
+export const forgotPassword = async(req: Request, res: Response, next: NextFunction) => {
+   const code = passGenerator()
+
+   const { email } = req.body
+
+   const founder = await User.findOne({email: email})
+   if (!founder) return next(new AppError("Email not found", 404))
+}
+
 export const logout = async (req: Request, res: Response) => {
   const { refreshtoken } = req.cookies;
   try {
@@ -138,7 +149,7 @@ export const logout = async (req: Request, res: Response) => {
         status: 'error',
       });
     }
-    await user.save()
+    await user.save();
     return res.status(200).json({ message: 'User logged out successfully' });
   } catch (err) {
     console.log(err);
