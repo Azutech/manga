@@ -8,7 +8,8 @@ import passGenerator from '../../utils/passGenerator';
 import { createToken } from '../../utils/token';
 import UserType from '../../interfaces/usertype';
 import AppError from '../../errors/errors';
-import { verificationMail } from '../mail/sendMails';
+import { verificationMail, forgotPasswordMail } from '../mail/sendMails';
+import Token from '../../models/tokens ';
 
 dotenv.config();
 
@@ -125,15 +126,39 @@ export const authentication = async (
   }
 };
 
+export const forgotPassword = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const code = passGenerator();
 
-export const forgotPassword = async(req: Request, res: Response, next: NextFunction) => {
-   const code = passGenerator()
+  const { email } = req.body;
 
-   const { email } = req.body
+  const founder = await User.findOne({ email: email });
+  if (!founder) return next(new AppError('Email not found', 404));
 
-   const founder = await User.findOne({email: email})
-   if (!founder) return next(new AppError("Email not found", 404))
-}
+  try {
+    const tokenId = await Token.findOneAndUpdate(
+      {
+        owner: founder._id,
+      },
+      {
+        $set: {
+          token: code,
+        },
+      }
+    );
+    if (!tokenId) return res.status(404).json({ message: 'invalid token' });
+    tokenId.save();
+
+    const link = ``;
+    await forgotPasswordMail(founder.firstName, founder.email, link);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
 
 export const logout = async (req: Request, res: Response) => {
   const { refreshtoken } = req.cookies;
