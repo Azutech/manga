@@ -12,7 +12,11 @@ const tokenSchema = new Schema<TokenType>(
     token: { type: String, required: true },
     createdAt: { type: Date, default: Date.now(), expires: 3600 },
   },
-  { timestamps: true }
+
+  // { _id: false },
+
+  { timestamps: true },
+
 );
 const Token = model('Token', tokenSchema);
 export default Token;

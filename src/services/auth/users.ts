@@ -141,21 +141,22 @@ export const forgotPassword = async (
   if (!founder) return next(new AppError('Email not found', 404));
 
   try {
-    const tokenId = await Token.findOneAndUpdate(
-      {
+    const tokenId = await Token.create({
         owner: founder._id,
-      },
-      {
-        $set: {
-          token: code,
-        },
-      }
-    );
+        token: code,
+    });
+    console.log(tokenId)
     if (!tokenId) return res.status(404).json({ message: 'invalid token' });
     tokenId.save();
 
     const link = `${CLIENT_URL}/passwordReset?token=${code}/&id=${founder._id}`;
+   
     await forgotPasswordMail(founder.firstName, founder.email, link);
+    return res.status(200).json({
+      success: true,
+      message: "mail has been sent to email",
+      data: tokenId
+    })
   } catch (err) {
     console.log(err);
     next(err);
