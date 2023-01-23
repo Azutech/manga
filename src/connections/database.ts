@@ -7,22 +7,18 @@ dotenv.config();
 
 mongoose.set('debug', true);
 
-
-
 const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
-
 const uri = process.env.MONGO_URI as string;
-
 
 const database = async () => {
   await mongoose
     .connect(uri, connectionParams as ConnectionOptions)
     .then(() => {
-      logger.info("Connected to Manga DB on MongoDB cluster");
+      logger.info('Connected to Manga DB on MongoDB cluster');
     })
 
     .catch((err) => {

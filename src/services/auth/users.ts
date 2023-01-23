@@ -4,14 +4,18 @@ import bcrypt, { hashSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../../models/users';
 import codeGenerator from '../../utils/codeGenerator';
+import passGenerator from '../../utils/passGenerator';
 import { createToken } from '../../utils/token';
 import UserType from '../../interfaces/usertype';
 import AppError from '../../errors/errors';
-import { verificationMail } from '../mail/sendMails';
+import { verificationMail, forgotPasswordMail } from '../mail/sendMails';
+import Token from '../../models/tokens ';
 
 dotenv.config();
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
+
+const CLIENT_URL = process.env.CLIENT_URL as string
 
 export const signup = async function (req: Request, res: Response) {
   const code = codeGenerator();
@@ -118,6 +122,41 @@ export const authentication = async (
       success: true,
       message: 'User logged in successfully',
     });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export const forgotPassword = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const code = passGenerator();
+
+  const { email } = req.body;
+
+  const founder = await User.findOne({ email: email });
+  if (!founder) return next(new AppError('Email not found', 404));
+
+  try {
+    const tokenId = await Token.create({
+        owner: founder._id,
+        token: code,
+    });
+    console.log(tokenId)
+    if (!tokenId) return res.status(404).json({ message: 'invalid token' });
+    tokenId.save();
+
+    const link = `${CLIENT_URL}/passwordReset?token=${code}/&id=${founder._id}`;
+   
+    await forgotPasswordMail(founder.firstName, founder.email, link);
+    return res.status(200).json({
+      success: true,
+      message: "mail has been sent to email",
+      data: tokenId
+    })
   } catch (err) {
     console.log(err);
     next(err);

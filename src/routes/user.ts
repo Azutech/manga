@@ -1,6 +1,11 @@
 import { Router } from 'express';
 
-import { getAllUsers, getUser, destroyerUser, personalInfo } from '../services/users/users';
+import {
+  getAllUsers,
+  getUser,
+  destroyerUser,
+  personalInfo,
+} from '../services/users/users';
 
 const users = Router();
 
