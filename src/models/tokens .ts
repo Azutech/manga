@@ -15,8 +15,7 @@ const tokenSchema = new Schema<TokenType>(
 
   // { _id: false },
 
-  { timestamps: true },
-
+  { timestamps: true }
 );
 const Token = model('Token', tokenSchema);
 export default Token;
