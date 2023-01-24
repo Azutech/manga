@@ -1,4 +1,4 @@
 export type categoryType = {
-    category: string
-    subcategory:string
-}
+  category: string;
+  subcategory: string;
+};

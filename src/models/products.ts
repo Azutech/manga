@@ -1,8 +1,8 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { productType } from '../interfaces/productType';
 import User from './users';
 
-const product = new Schema<productType>({
+const productSchema = new Schema<productType>({
   owner: {
     type: Schema.Types.ObjectId,
     ref: User,
@@ -36,3 +36,7 @@ const product = new Schema<productType>({
     type: Number,
   },
 });
+
+const product = model('product', productSchema);
+
+export default product;
