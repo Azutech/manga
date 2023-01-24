@@ -15,7 +15,7 @@ dotenv.config();
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
 
-const CLIENT_URL = process.env.CLIENT_URL as string
+const CLIENT_URL = process.env.CLIENT_URL as string;
 
 export const signup = async function (req: Request, res: Response) {
   const code = codeGenerator();
@@ -142,21 +142,21 @@ export const forgotPassword = async (
 
   try {
     const tokenId = await Token.create({
-        owner: founder._id,
-        token: code,
+      owner: founder._id,
+      token: code,
     });
-    console.log(tokenId)
+    console.log(tokenId);
     if (!tokenId) return res.status(404).json({ message: 'invalid token' });
     tokenId.save();
 
     const link = `${CLIENT_URL}/passwordReset?token=${code}/&id=${founder._id}`;
-   
+
     await forgotPasswordMail(founder.firstName, founder.email, link);
     return res.status(200).json({
       success: true,
-      message: "mail has been sent to email",
-      data: tokenId
-    })
+      message: 'mail has been sent to email',
+      data: tokenId,
+    });
   } catch (err) {
     console.log(err);
     next(err);
