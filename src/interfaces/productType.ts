@@ -8,4 +8,7 @@ export type productType = {
   size: string;
   colours: string;
   unit_price: number;
+  weight: string;
+  category: string;
+  subCategory: string;
 };

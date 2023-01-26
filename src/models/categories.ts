@@ -8,10 +8,10 @@ const categorySchema = new Schema({
 
   subCategory: {
     type: String,
-    required: true,
+    default: [],
   },
 });
 
-const categories = model('product', categorySchema);
+const categories = model('category', categorySchema);
 
 export default categories;

@@ -1,14 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { productType } from '../interfaces/productType';
-import User from './users';
 
 const productSchema = new Schema<productType>({
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: User,
-    required: [true, 'Product just have a owner'],
-  },
-
   name: {
     type: String,
     required: [true, 'Product just have a name'],
@@ -34,6 +27,20 @@ const productSchema = new Schema<productType>({
   },
   unit_price: {
     type: Number,
+  },
+
+  weight: {
+    type: String,
+  },
+
+  category: {
+    type: String,
+    required: true,
+  },
+
+  subCategory: {
+    type: String,
+    required: true,
   },
 });
 
