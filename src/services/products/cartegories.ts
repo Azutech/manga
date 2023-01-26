@@ -2,7 +2,7 @@ import Category from '../../models/categories';
 import AppError from '../../errors/errors';
 import { Request, Response, NextFunction } from 'express';
 
-export const catergories = async (
+export const categories = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -56,4 +56,48 @@ export const createCatergories = async (
   }
 };
 
-// export const allSubCategory = async (req:Req)
+export const OnesubCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { categories } = req.body;
+  try {
+    if (!categories)
+      return res.status(404).json({ message: 'kindly input the category' });
+    const subCategory = await Category.findOne({ category: categories });
+    if (!subCategory)
+      return next(new AppError('Unable to retrieve subcategories', 404));
+
+    return res.status(201).json({
+      message: 'subcategories are retrieved',
+      data: subCategory,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export const allCategoriesAndSub = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const allcategories = await Category.find();
+
+  try {
+    if (!allcategories)
+      return next(
+        new AppError('Cannot Retrieve categories and subcategory', 404)
+      );
+    res.status(201).json({
+      success: true,
+      message: 'Data has been retrieved',
+      data: allcategories,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
