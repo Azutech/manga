@@ -1,2 +1,112 @@
 2023-01-02T18:32:31.903Z [boom] info: Express is listening at http://localhost:3000
 2023-01-02T18:32:31.912Z [boom] info: Connected to Manga DB on localhost
+2023-01-10T20:17:57.001Z [boom] info: Express is listening at http://localhost:3000
+2023-01-10T20:18:03.965Z [boom] info: Connected to Manga DB on localhost
+2023-01-10T20:19:58.746Z [boom] info: Express is listening at http://localhost:3000
+2023-01-10T20:20:01.200Z [boom] info: Express is listening at http://localhost:3000
+2023-01-10T20:20:03.195Z [boom] info: Express is listening at http://localhost:3000
+2023-01-10T20:20:11.109Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T13:54:20.468Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T13:54:23.683Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T13:57:14.379Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T13:58:06.147Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T13:58:08.711Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T13:59:21.086Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T13:59:24.083Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T14:00:01.160Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:00:04.980Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:00:06.519Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:00:08.121Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:00:11.204Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T14:28:50.836Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:28:53.734Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T14:29:24.920Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:29:59.378Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:30:32.932Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T14:30:37.642Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:30:40.491Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:30:42.844Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:30:46.501Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T14:31:51.169Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:31:52.831Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T14:31:59.195Z [boom] info: Connected to Manga DB on localhost
+2023-01-11T15:53:28.866Z [boom] info: Express is listening at http://localhost:3000
+2023-01-11T15:53:31.899Z [boom] info: Connected to Manga DB on localhost
+2023-01-17T16:19:56.109Z [boom] info: Express is listening at http://localhost:3000
+2023-01-17T16:19:58.187Z [boom] info: Connected to Manga DB on localhost
+2023-01-18T14:23:26.933Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:15:09.955Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:15:12.048Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-19T12:17:42.303Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:17:44.732Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-19T12:24:09.752Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:24:11.875Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-19T12:28:28.055Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:28:30.088Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-19T12:32:09.789Z [boom] info: Express is listening at http://localhost:3000
+2023-01-19T12:32:12.728Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:06:16.225Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:06:50.449Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:52:06.248Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:52:10.544Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:52:17.991Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:52:20.654Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:52:26.036Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:52:27.950Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:52:56.090Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:52:57.906Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:53:00.185Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:04.059Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:05.962Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:53:16.134Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:17.979Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:53:29.333Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:33.690Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:35.611Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T13:53:51.218Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T13:53:55.129Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:01:37.195Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:01:39.273Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:01:45.475Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:01:47.782Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:01:49.466Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:01:54.239Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:01:58.281Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:08:36.024Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:08:54.671Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:08:57.351Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:09:00.983Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:09:03.660Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:09:07.174Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:10:32.232Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:10:34.333Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:11:00.688Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:03.212Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:11:13.262Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:16.891Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:11:26.418Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:28.412Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:11:36.544Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:39.449Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:44.601Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:46.445Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:11:56.635Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:11:58.601Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:12:01.145Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:12:04.556Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:12:26.980Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:12:30.520Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:12:59.618Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:13:35.808Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:13:39.996Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:15:00.812Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:15:49.794Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:15:52.270Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:15:56.288Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:16:48.728Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:16:51.773Z [boom] info: Connected to Manga DB on MongoDB cluster
+2023-01-23T14:18:22.217Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:19:41.760Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:19:45.751Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:20:30.198Z [boom] info: Express is listening at http://localhost:3000
+2023-01-23T14:20:32.597Z [boom] info: Connected to Manga DB on MongoDB cluster
