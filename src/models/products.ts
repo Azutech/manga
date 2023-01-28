@@ -17,6 +17,10 @@ const productSchema = new Schema<productType>({
     default: 0,
   },
 
+  dimension : {
+    type : String,
+  },
+
   size: {
     type: String,
     enum: ['S', 'M', 'L', 'XL', 'XXL'],

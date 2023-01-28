@@ -1,8 +1,6 @@
 import Product from '../../models/products';
 import AppError from '../../errors/errors';
-import { Request, Response } from 'express';
-import { NextFunction } from 'express-serve-static-core';
-import { nextTick } from 'process';
+import { Request, Response , NextFunction} from 'express';
 
 export const product = async (
   req: Request,
@@ -62,7 +60,7 @@ export const createProduct = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, description, price, size, weight, category, subCategory } =
+  const { name, description, price, size, weight, category, colours, unit_price, subCategory } =
     req.body;
 
   try {
@@ -74,7 +72,9 @@ export const createProduct = async (
         size ||
         category ||
         weight ||
-        subCategory
+        subCategory ||
+        colours ||
+        unit_price
       )
     )
       return next(new AppError('fill in all the bodies', 404));
@@ -88,8 +88,10 @@ export const createProduct = async (
       price,
       size,
       category,
+      colours,
       subCategory,
       weight,
+      unit_price
     });
 
     return res.status(201).json({
@@ -101,3 +103,20 @@ export const createProduct = async (
     next(err);
   }
 };
+
+
+export const destroyProducts = async (req: Request, res: Response, next: NextFunction) => {
+  const {id} = req.params
+  try {
+    const product = await Product.findOne({ _id: id });
+    if (!product) return next(new AppError('Product not found', 404));
+
+    return res.status(200).json({
+      message: 'This product has been deleted',
+      data: product,
+    });
+  } catch (err) {
+    console.log(err)
+    next(new AppError(`This product can not be deleted ${err}`, 503))
+  }
+}
