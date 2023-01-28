@@ -32,7 +32,7 @@ export const signup = async function (req: Request, res: Response) {
   try {
     const check = await User.findOne({ email: req.body.email });
     if (check) return res.status(404).json({ message: 'user already exists' });
-    
+
     const refreshtoken = createToken(
       { email: newUser.email },
       TOKEN_SECRET,

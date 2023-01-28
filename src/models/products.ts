@@ -17,8 +17,8 @@ const productSchema = new Schema<productType>({
     default: 0,
   },
 
-  dimension : {
-    type : String,
+  dimension: {
+    type: String,
   },
 
   size: {

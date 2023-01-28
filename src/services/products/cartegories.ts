@@ -36,16 +36,17 @@ export const createCatergories = async (
     return next(new AppError('Kindly fill in the input field', 404));
 
   try {
-    const check = await Category.findOne({category: category})
+    const check = await Category.findOne({ category: category })
       .exec()
       .catch((err) => {});
-    if (check) return res.status(404).json({ message: 'category already exists' });
-    
+    if (check)
+      return res.status(404).json({ message: 'category already exists' });
+
     const newCatergory = await Category.create({
       category,
       subCategory,
     });
-    console.log(4)
+    console.log(4);
     return res.status(200).json({
       success: true,
       message: 'New categoeries and subcatergories has been created',
