@@ -2,7 +2,7 @@ import { Router } from 'express';
 import users from './user';
 import auth from './auth';
 import { categor } from './products/cartegory';
-import {products} from '../routes/products/products'
+import { products } from '../routes/products/products';
 
 const routes = Router();
 

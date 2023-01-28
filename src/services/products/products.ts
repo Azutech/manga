@@ -36,22 +36,26 @@ export const product = async (
   }
 };
 
-export const getOneProduct = async (req: Request, res: Response, next: NextFunction) => {
-    const { id } = req.params
+export const getOneProduct = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
 
-    try {
-        const product = await Product.findOne({_id: id})
-        if (!product) return next(new AppError('Unable to retrieve product', 404))
+  try {
+    const product = await Product.findOne({ _id: id });
+    if (!product) return next(new AppError('Unable to retrieve product', 404));
 
-        return res.status(200).json({
-            message: "This product has been retrieved",
-            data: product
-        })
-    } catch (err) {
-        console.log(err)
-        next(err)
-    }
-}
+    return res.status(200).json({
+      message: 'This product has been retrieved',
+      data: product,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
 
 export const createProduct = async (
   req: Request,
