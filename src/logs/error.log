@@ -1,0 +1,2 @@
+2023-01-28T14:37:45.210Z [boom] error: Error connecting to the database. nError: querySrv ECONNREFUSED _mongodb._tcp.manga.wzudxwa.mongodb.net
+2023-01-28T14:38:04.143Z [boom] error: Error connecting to the database. nError: querySrv ECONNREFUSED _mongodb._tcp.manga.wzudxwa.mongodb.net
